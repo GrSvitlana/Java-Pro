@@ -17,7 +17,7 @@ Second level: То же самое, что в level 1, но в отчет доб
 В случае, проблем с реализацией можно посмотреть то что мы делали на уроке код StreetService (https://github.com/tel-ran-de/tasks31m/blob/main/javapractic23092022/src/main/java/com/github/telran_de/StreetService.java).
  */
 
-import java_practic_Sep23_ReportService.CacheService;
+import java_practic_Sep23_ReportService2.CacheService;
 
 import java.math.BigDecimal;
 

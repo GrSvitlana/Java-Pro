@@ -7,13 +7,10 @@ Report
 Сумма прибыли за год,
 Но оказалось, что построенние данного отчета занимает очень много времени и вас заказчик попросил реализовать сервис кеширования (CacheService) с помощью HashMap,
 который по стране филиала либо запрашивает данные у ReportService (если в кеше данных еще нет, а потом сохранает их в кеш), либо берет данные из кеша сразу (если они там уже сохранены).
-
 Сам сервис отчета (ReportService) реализовывать полностью не нужно, можно просто возвращать некоторые случайные данные каждый раз (например, используя Math.random).
 Важно реализовать именно сервис кеширования (CacheService)
-
 Second level: То же самое, что в level 1, но в отчет добавить город и департамент (они же будут параметрами при запросе у CacheService и ReportService),
 поэтому потребуется сделать кеширование с помощью дополнительного класса (не забудьте про equals и hashcod) или вложенных HashMap.
-
 В случае, проблем с реализацией можно посмотреть то что мы делали на уроке код StreetService (https://github.com/tel-ran-de/tasks31m/blob/main/javapractic23092022/src/main/java/com/github/telran_de/StreetService.java).
  */
 
@@ -25,6 +22,8 @@ public class Main {
         cacheService.getMapCashe("Belgium", "Bruegge","Brue");
         cacheService.getMapCashe("Italy", "Venedig", "Ven");
         cacheService.getMapCashe("Italy", "Rom", "Rim");
+        cacheService.getMapCashe("Belgium", "Bruegge","Brue");
+        cacheService.getMapCashe("Italy", "Venedig", "Ven");
         cacheService.getMapCashe("Finland", "Helsinki", "Chesr");
         cacheService.getMapCashe("United Kingdom", "Manchester","Chester");
         cacheService.getMapCashe("Belgium", "Bruegge", "Brue");
@@ -39,6 +38,5 @@ public class Main {
         cacheService.getMapCashe("Finland", "Helsinki", "Chesr");
         cacheService.getMapCashe("United Kingdom", "Manchester","Chester");
         cacheService.getMapCashe("Italy", "Venedig", "Ven");
-
     }
 }

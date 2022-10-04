@@ -5,46 +5,89 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
 public class CacheService {
-    String country;
-    String city;
-    String department;
-    public CacheService() {}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CacheService that = (CacheService) o;
-        return Objects.equals(country, that.country) && Objects.equals(city, that.city) && Objects.equals(department, that.department);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(country, city, department);
-    }
+    // создаем класс Key
+    private static class Key {
+        private String country;
+        private String city;
+        private String department;
 
-    private final Map<String, Map<String, String>> cache = new HashMap<>();
-    private final Map<Map<String, Map<String, String>>, BigDecimal[]> filialCache = new HashMap<>();
-
-    public final Map<Map<String, Map<String, String>>, BigDecimal[]> getMapCashe(String country, String city, String department) {
-
-        if (cache.containsKey(country)) {
-            for (Map.Entry<String, Map<String, String>> entry : cache.entrySet()) {
-                Map<String, String> filial = entry.getValue();
-                if (filial.containsKey(city) && filial.containsValue(department)) {
-                    System.out.printf("%s %s %s %n", country, cache.get(country), Arrays.toString(filialCache.get(cache)));
-                    return filialCache;
-                }
-            }
+        public Key(String country, String city, String department) {
+            this.country = country;
+            this.city = city;
+            this.department = department;
         }
 
-        BigDecimal[] sap = ReportService.salesAndProfit(country, city, department);
-        cache.put(country, new HashMap<>());
-        cache.get(country).put(city, department);
-        filialCache.put(cache, sap);
-        System.out.printf("%s %s %s %n", country, cache.get(country), Arrays.toString(filialCache.get(cache)));
-        return filialCache;
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Key)) return false;
+            Key report = (Key) o;
+            return Objects.equals(country, report.country) && Objects.equals(city, report.city) && Objects.equals(department, report.department);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(country, city, department);
+        }
+    }
+
+    // создаем класс Report
+    private static class Report {
+        private String country;
+        private String city;
+        private String department;
+        private BigDecimal[] sap;
+
+        public Report(String country, String city, String department, BigDecimal[] sap) {
+            this.country = country;
+            this.city = city;
+            this.department = department;
+            this.sap = sap;
+        }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Key)) return false;
+            Key report = (Key) o;
+            return Objects.equals(country, report.country) && Objects.equals(city, report.city) && Objects.equals(department, report.department);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(country, city, department);
+        }
+
+        @Override
+        public String toString() {
+            return "Report{" +
+                    "country='" + country + '\'' +
+                    ", city='" + city + '\'' +
+                    ", department='" + department + '\'' +
+                    ", sap=" + Arrays.toString(sap) +
+                    '}';
+        }
+    }
+    public CacheService() {}
+
+    // Создаем кеш мап
+    private final Map<Key, Report> cache = new HashMap<>();
+
+    public final Report getMapCashe(String country, String city, String department) {
+        Key key = new Key(country, city, department);
+        Report report = cache.get(key);
+
+        if(report != null) {
+            System.out.println("From cache " + report);
+            return report;
+        } else {
+            BigDecimal[] sap = ReportService.salesAndProfit(country, city, department);
+            Report newReport = new Report(country, city, department, sap);
+            cache.put(key, newReport);
+            System.out.println("Not from cache " + newReport);
+            return report;
+        }
     }
 }
