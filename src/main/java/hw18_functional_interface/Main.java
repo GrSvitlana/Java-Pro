@@ -2,7 +2,6 @@ package hw18_functional_interface;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Predicate;
 
 /*
