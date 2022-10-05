@@ -2,6 +2,7 @@ package hw18_functional_interface;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 /*
@@ -36,6 +37,7 @@ public class Main {
 
         Predicate<String> isNotNull = s -> s != null;
         Predicate<String> isNotEmpty = s -> !s.isEmpty();
+
         Predicate<String> predicate = isNotNull.and(isNotEmpty);
 
         System.out.println(stringLonger.longer("Write a functional interface with a method that accepts two strings and returns a string.",
@@ -57,11 +59,10 @@ public class Main {
 
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if (map.containsKey(ch) && map.get(ch) >= count) {
+            if (map.containsKey(ch)) {
                 count = map.get(ch) + 1;
             }
             map.put(ch, i);
-
             if (result < i - count + 1) {
                 result = i - count + 1;
             }
