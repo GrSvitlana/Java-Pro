@@ -32,14 +32,14 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 public class Main {
     public static void main(String[] args) {
 
-        Longer<String> stringLonger = (t1, t2) -> t1.length() >= t2.length() ? t1 : t2;
+        Longestable<String> stringLongestable = (s1, s2) -> s1.length() >= s2.length() ? s1 : s2;
 
-        Predicate<String> isNotNull = s -> s != null;
+        Predicate<String> isNotNull = s -> s != null; //Objects::nonNull;
         Predicate<String> isNotEmpty = s -> !s.isEmpty();
 
         Predicate<String> predicate = isNotNull.and(isNotEmpty);
 
-        System.out.println(stringLonger.longer("Write a functional interface with a method that accepts two strings and returns a string.",
+        System.out.println(stringLongestable.longer("Write a functional interface with a method that accepts two strings and returns a string.",
                 "Write an implementation of this interface as a lambda which returns the string that is longer."));
 
         System.out.println(predicate.test("Write a program that checks that the string is not null " +
