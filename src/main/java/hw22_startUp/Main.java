@@ -22,12 +22,9 @@ public class Main {
         System.out.println(getIncome(users, "DE"));
     }
 
-    public static Double getIncome(List<User> users) {
-        double result = 0;
-        for (User user : users) {
-            result += user.getIncome();
-        }
-        return result;
+    public static double getIncome(List<User> users) {
+        return users.stream()
+                .mapToDouble(User::getIncome).sum();
     }
 
     public static double getIncome(List<User> users, String country) {
