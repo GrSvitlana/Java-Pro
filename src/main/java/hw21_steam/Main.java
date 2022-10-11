@@ -25,10 +25,10 @@ public class Main {
 
         List<String> list2 = new ArrayList<>(Arrays.asList("Highload", "High", "Load", "Highload"));
         int countHigh = (int)list2.stream()
-                .filter("High"::equals)
+                .filter("High"::equals) //  .filter(s -> s.contains("High"))
                 .count();
         System.out.printf("\"High\" occurs %d times\n", countHigh);
-        System.out.println(list2.stream().findFirst().orElse(String.valueOf(0)));
+        System.out.println(list2.stream().findFirst().orElse("0"));
 
         List<String> list3 = new ArrayList<>(Arrays.asList("f10", "f15", "f2", "f4", "f4"));
         list3.stream()
