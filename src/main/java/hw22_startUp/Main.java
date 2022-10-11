@@ -1,8 +1,6 @@
 package hw22_startUp;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,10 +16,10 @@ public class Main {
         VipUser vipUser2 = new VipUser(50, "UA");
         VipUser vipUser3 = new VipUser(50, "GB");
 
-        List<User> users = new ArrayList<>(Arrays.asList(simpleUser1, simpleUser2, simpleUser3, premiumUser1, premiumUser2, premiumUser3, vipUser1, vipUser2, vipUser3));
+        List<User> users = new ArrayList<>();
+        Collections.addAll(users, simpleUser1, simpleUser2, simpleUser3, premiumUser1, premiumUser2, premiumUser3, vipUser1, vipUser2, vipUser3);
         System.out.println(getIncome(users));
         System.out.println(getIncome(users, "DE"));
-
     }
 
     public static Double getIncome(List<User> users) {
@@ -32,13 +30,9 @@ public class Main {
         return result;
     }
 
-    public static Double getIncome(List<User> users, String country) {
-        double result = 0;
-        for (User user : users) {
-            if(user.getCountry().equals(country)) {
-                result += user.getIncome();
-            }
-        }
-        return result;
+    public static double getIncome(List<User> users, String country) {
+        return users.stream()
+                .filter(user -> user.getCountry().equals(country))
+                .mapToDouble(User::getIncome).sum();
     }
 }
