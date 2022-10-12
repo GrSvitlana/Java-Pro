@@ -14,16 +14,16 @@ import static java.util.Collections.reverseOrder;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(Arrays.asList(9, 8, 7, 6, 5, 4, 12, 23, 45, 56, 78));
+        List<Integer> list = Arrays.asList(9, 8, 7, 6, 5, 4, 12, 23, 45, 56, 78);
         int numbers = (int) list.stream().filter(a -> a % 2 == 0).count();
         System.out.println(numbers);
 
-        List<String> surnames = new ArrayList<>(Arrays.asList("Aaaa", "Bbbb", "Cccc", "Dddd", "Jjjj", "Kkkk", "Llll", "Jmmm", "Nnnn"));
+        List<String> surnames = Arrays.asList("Aaaa", "Bbbb", "Cccc", "Dddd", "Jjjj", "Kkkk", "Llll", "Jmmm", "Nnnn");
         surnames.stream()
                 .filter(s -> s.startsWith("J"))
                 .forEach(System.out::println);
 
-        List<String> list2 = new ArrayList<>(Arrays.asList("Highload", "High", "Load", "Highload"));
+        List<String> list2 = Arrays.asList("Highload", "High", "Load", "Highload");
         int countHigh = (int)list2.stream()
                 .filter(s -> s.contains("High"))
                 .count();
