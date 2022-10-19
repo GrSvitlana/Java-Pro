@@ -11,7 +11,7 @@ import java.io.*;
 
 public class Main {
     public static final String PATH_1 = "../TelRan/Resource/file1.txt";
-    public static final String PATH_2 = "..TelRan/Resource/file2.txt";
+    public static final String PATH_2 = "../TelRan/Resource/file2.txt";
     public static final String PATH_3 = "../TelRan";
 
     public static void main(String[] args) throws IOException {
