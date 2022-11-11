@@ -8,7 +8,6 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,7 +26,7 @@ public class Main {
             List<Integer> results = map.entrySet().stream()
                     .filter(x -> x.getValue().equals(maxCounts))
                     .map(Map.Entry::getKey).toList();
-            System.out.printf("The maximum number of repetitions is %d with results %s", maxCounts, results.toString());
+            System.out.printf("The maximum number of repetitions is %d with results %s", maxCounts, results);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
