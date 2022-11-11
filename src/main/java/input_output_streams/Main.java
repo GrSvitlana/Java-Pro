@@ -14,7 +14,7 @@ public class Main {
         int bytes;
         Map<Integer, Integer> map = new HashMap<>();
         try {
-            FileInputStream input = new FileInputStream("/Users/svitlanagraf/TelRan/Resource/file1.txt");
+            FileInputStream input = new FileInputStream("../TelRan/Resource/file1.txt");
             while (input.available() > 0) {
                 bytes = input.read();
                 map.put(bytes, map.getOrDefault(bytes, 0) + 1);
