@@ -111,3 +111,5 @@ target/generated-sources/
 *.xcodeproj
 
 .gitignore
+/src/main/resources/
+pom.xml
