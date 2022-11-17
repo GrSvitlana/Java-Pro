@@ -7,7 +7,10 @@ the contents of file1 into file2. Note: file1 necessarily exists on disk.
 about all files and directories in it and its subdirectories.
  */
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Main {
     public static final String PATH_1 = "../TelRan/Resource/file1.txt";
@@ -22,11 +25,12 @@ public class Main {
 
     private static void fileCopy(String file1, String file2) throws IOException {
         FileInputStream fileInput = new FileInputStream(file1);
+        FileOutputStream fileOutput = new FileOutputStream(file2);
+
         byte[] buffer = new byte[fileInput.available()];
         fileInput.read(buffer);
         fileInput.close();
 
-        FileOutputStream fileOutput = new FileOutputStream(file2);
         fileOutput.write(buffer);
         fileOutput.flush();
         fileOutput.close();

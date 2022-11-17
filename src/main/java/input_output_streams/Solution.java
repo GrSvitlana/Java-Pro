@@ -26,7 +26,7 @@ public class Solution {
                 String word = "";
                 for (int i = 0; i < str.length(); i++) {
                     char ch = str.charAt(i);
-                    if (ch == ' ') {
+                    if (ch == ' ') { // str.split("\s")
                         try {
                             words.set(count, words.get(count) + " " + word);
                         } catch (IndexOutOfBoundsException e) {
