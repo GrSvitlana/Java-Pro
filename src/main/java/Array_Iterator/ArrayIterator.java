@@ -1,4 +1,4 @@
-package hw9_Iterator;
+package Array_Iterator;
 
 import java.util.Iterator;
 

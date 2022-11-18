@@ -1,11 +1,8 @@
-package hw9_Iterator;
+package Array_Iterator;
 /*
 Implement a class (ArrayIterator) iterator that will implement the interface (Iterator) on a given array of objects.
 Create an array of test objects (7 pieces) and use the implemented ArrayIterator class to display the contents of the array.
 */
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
