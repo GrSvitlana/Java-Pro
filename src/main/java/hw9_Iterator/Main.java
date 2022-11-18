@@ -1,7 +1,7 @@
 package hw9_Iterator;
 /*
-Write an iterator over an array.
-There must be a class (let's call it ArrayIterator, for example) that implements the Iterator interface.
+Implement a class (ArrayIterator) iterator that will implement the interface (Iterator) on a given array of objects.
+Create an array of test objects (7 pieces) and use the implemented ArrayIterator class to display the contents of the array.
 */
 
 import java.lang.reflect.Array;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
 
-        String[] array = {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"};
+        String[] array = {"Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"};
         toIterate(array);
     }
 
