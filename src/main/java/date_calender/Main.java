@@ -15,7 +15,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        LocalDate birthday = LocalDate.of(1991, Month.SEPTEMBER, 4);
+        LocalDate birthday = LocalDate.of(2000, Month.JANUARY, 1);
         System.out.printf("The day of the week is %s.\nThe day of the year is %s\n" +
                 "The month is %s\nThe year is %s\n",
                 birthday.getDayOfWeek(), birthday.getDayOfYear(),
