@@ -12,7 +12,7 @@ public class Main {
     }
 
     public static void toIterate(String[] array) {
-        ArrayIterator arrayIterator = new ArrayIterator<>(array);
+        ArrayIterator<String> arrayIterator = new ArrayIterator<>(array);
         while (arrayIterator.hasNext()) {
             System.out.println(arrayIterator.next());
         }

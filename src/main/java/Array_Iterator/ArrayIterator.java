@@ -1,6 +1,7 @@
 package Array_Iterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayIterator<T> implements Iterator<T> {
 
@@ -13,18 +14,24 @@ public class ArrayIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        return array.length > index;
+        return index < array.length;
     }
 
     @Override
     public T next() {
-        return array[index++];
+        if (hasNext()) {
+            return array[index++];
+        }
+        throw new NoSuchElementException();
     }
 
     @Override
     public void remove() {
+        if (!hasNext()) {
+            throw new UnsupportedOperationException();
+        }
         int i = index - 1;
-        array[index] = null;
+        array[i] = null;
     }
 }
 
